@@ -9,15 +9,16 @@
 namespace App\Helpers;
 
 
+use App\Entity\Comment;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 
-class RandomUserId
+class RandomId
 {
     private $entityManager;
 
     /**
-     * RandomUserId constructor.
+     * RandomId constructor.
      * @param $entityManager
      */
     public function __construct(EntityManagerInterface $entityManager)
@@ -25,10 +26,17 @@ class RandomUserId
         $this->entityManager = $entityManager;
     }
 
-    public function get(): int
+    public function getUserId(): int
     {
         $userIds = $this->entityManager->getRepository(User::class)->getRandomUserId();
         $randomId = $userIds[array_rand($userIds)];
+        return $randomId;
+    }
+
+    public function getCommentId(): int
+    {
+        $commentIds = $this->entityManager->getRepository(Comment::class)->getRandomCommentId();
+        $randomId = $commentIds[array_rand($commentIds)];
         return $randomId;
     }
 

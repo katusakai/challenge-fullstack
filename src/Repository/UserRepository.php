@@ -25,12 +25,11 @@ class UserRepository extends ServiceEntityRepository
 
         $sql = '
                 SELECT u.id
-                from user u
+                FROM user u
                 ';
         $query = $conn->prepare($sql);
         $query->execute();
 
-//        return $query->fetchAll();
         $result = [];
         foreach ($query->fetchAll() as $fetch){
             $result[] = $fetch['id'];

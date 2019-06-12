@@ -76,7 +76,7 @@ class Comment
 ;
     }
 
-    public function setNestedCommentId(?bool $nestedCommentId): self
+    public function setNestedCommentId(int $nestedCommentId): self
     {
         $this->nestedCommentId = $nestedCommentId;
 

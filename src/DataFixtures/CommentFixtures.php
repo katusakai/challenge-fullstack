@@ -3,35 +3,61 @@
 namespace App\DataFixtures;
 
 use App\Entity\Comment;
-use App\Helpers\RandomUserId;
+use App\Helpers\RandomId;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 class CommentFixtures extends Fixture implements DependentFixtureInterface
 {
-    private $randomUserId;
+    private $randomId;
+
+    private $nestedCommentId;
 
     /**
      * CommentFixtures constructor.
-     * @param $randomUserId
+     * @param $randomId
      */
-    public function __construct(RandomUserId $randomUserId)
+    public function __construct(RandomId $randomId)
     {
-        $this->randomUserId = $randomUserId;
+        $this->randomId = $randomId;
     }
 
     public function load(ObjectManager $manager)
     {
-         $comment = new Comment();
-         $comment
-             ->setUserId($this->randomUserId->get())
-             ->setText('grazus tekstas')
-             ->setCreatedAt(new \DateTime())
-             ;
-         $manager->persist($comment);
+        $this->mainComments($manager);
+        $this->nestedComments($manager);
+    }
 
-        $manager->flush();
+    private function mainComments(ObjectManager $manager)
+    {
+        for ($i = 0; $i <20; $i++){
+            $comment = new Comment();
+            $comment
+                ->setUserId($this->randomId->getUserId())
+                ->setText('The content of main comment no ' . $i)
+                ->setCreatedAt(new \DateTime())
+            ;
+            $manager->persist($comment);
+            $manager->flush();
+
+            $this->nestedCommentId[] = $comment->getId();
+        }
+    }
+
+    private function nestedComments(ObjectManager $manager)
+    {
+        for ($i = 0; $i <20; $i++){
+            $comment = new Comment();
+            $comment
+                ->setUserId($this->randomId->getUserId())
+                ->setNestedCommentId($this->randomId->getCommentId())
+                ->setText('The content of nested comment '. $comment->getNestedCommentId() .' no ' . $i)
+                ->setCreatedAt(new \DateTime())
+            ;
+            $manager->persist($comment);
+            $manager->flush();
+        }
     }
 
     public function getDependencies()
