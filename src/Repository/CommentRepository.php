@@ -19,6 +19,40 @@ class CommentRepository extends ServiceEntityRepository
         parent::__construct($registry, Comment::class);
     }
 
+    public function getMainComments()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+                SELECT DISTINCT c.id, c.text, c.created_at, c.edited_at, u.username, u.id as user_id, u.first_name, u.last_name, u.email
+                FROM comment c
+                INNER JOIN user u
+                  ON c.user_id = u.id
+                WHERE c.nested_comment_id IS NULL  
+                ';
+
+        $query = $conn->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function getNestedComments()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+                SELECT DISTINCT c.id, c.nested_comment_id, c.text, c.created_at, c.edited_at, u.username, u.id as user_id, u.first_name, u.last_name, u.email
+                FROM comment c
+                INNER JOIN user u
+                  ON c.user_id = u.id
+                WHERE c.nested_comment_id IS NULL  
+                ';
+
+        $query = $conn->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
     public function getRandomCommentId()
     {
         $conn = $this->getEntityManager()->getConnection();
