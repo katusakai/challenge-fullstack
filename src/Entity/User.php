@@ -33,6 +33,26 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=180)
+     */
+    private $firstName;
+
+    /**
+     * @ORM\Column(type="string", length=180)
+     */
+    private $lastName;
+
+    /**
+     * @ORM\Column(type="string", length=180)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +105,66 @@ class User implements UserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getFirstName(): string
+    {
+        return (string) $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getLastName(): string
+    {
+        return (string) $this->lastName;
+    }
+
+    public function setLastName(string $lastName): self
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getEmail(): string
+    {
+        return (string) $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getCreatedAt(): string
+    {
+        return (string) $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTime $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

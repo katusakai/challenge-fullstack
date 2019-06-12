@@ -25,7 +25,11 @@ class UserFixtures extends Fixture
         for ($i = 0; $i < 10; $i++){
             $user = new User();
             $user
-                ->setUsername('katusakai' . $i)
+                ->setUsername('username' . $i)
+                ->setFirstName('Firstname' . $i)
+                ->setLastName('Lastname' .$i)
+                ->setEmail('email' . $i . '@email.lt')
+                ->setCreatedAt(new \DateTime())
                 ->setPassword($this->passwordEncoder->encodePassword(
                     $user,
                     'password'
