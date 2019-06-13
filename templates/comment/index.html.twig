@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CommentController!{% endblock %}
+
+{% block body %}
+    <div class="shadow p-3 mb-5 bg-white rounded">
+        {% for mainComment in mainComments %}
+            <div class="commentBox">
+                <div>{{ mainComment.first_name }} {{ mainComment.last_name }}
+                    <small class="text-secondary createdAt">Created at {{ mainComment.created_at|date('Y-m-d H:i') }}</small>
+                    {% if mainComment.edited_at != NULL %}
+                    <small class="text-secondary float-right">Edited at {{ mainComment.edited_at|date('Y-m-d H:i') }}</small>
+                    {% endif %}
+                </div>
+                <div>
+                    {{ mainComment.text }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
