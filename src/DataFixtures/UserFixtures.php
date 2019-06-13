@@ -33,7 +33,7 @@ class UserFixtures extends Fixture
 
             $user = new User();
             $user
-                ->setUsername($userApi->login->username)
+                ->setUsername('username' . $i)
                 ->setFirstName(ucfirst($userApi->name->first))
                 ->setLastName(ucfirst($userApi->name->last))
                 ->setEmail($userApi->email)
