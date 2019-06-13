@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\API\RandomJokesApi;
 use App\Entity\Comment;
 use App\Helpers\RandomDate;
 use App\Helpers\RandomEdited;
@@ -42,7 +43,7 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
             $comment = new Comment();
             $comment
                 ->setUserId($this->randomId->getUserId())
-                ->setText('The content of main comment no ' . $i)
+                ->setText(RandomJokesApi::get())
                 ->setCreatedAt($createdDate)
                 ->setEditedAt($editedDate)
             ;
@@ -65,7 +66,7 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
             $comment
                 ->setUserId($this->randomId->getUserId())
                 ->setNestedCommentId($this->randomId->getCommentId())
-                ->setText('The content of nested comment '. $comment->getNestedCommentId() .' no ' . $i)
+                ->setText(RandomJokesApi::get())
                 ->setCreatedAt($createdDate)
                 ->setEditedAt($editedDate)
             ;

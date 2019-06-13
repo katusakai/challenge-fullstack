@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\API\RandomJokesApi;
 use App\Entity\Comment;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;

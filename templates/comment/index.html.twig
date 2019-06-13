@@ -20,7 +20,8 @@
                 {% for nestedComment in nestedComments %}
                     {% if nestedComment.nested_comment_id == mainComment.id %}
                         <div class="commentBox nested">
-                            <div class="float-left"><img class="profilePicture" src="{{ nestedComment.profile_picture }}"></div>
+                            <div class="float-left"><img class="profilePicture" src="{{ nestedComment.profile_picture }}">
+                            </div>
                             <div>{{ nestedComment.first_name }} {{ nestedComment.last_name }}
                                 <small class="text-secondary createdAt">Created at {{ nestedComment.created_at|date('Y-m-d H:i') }}</small>
                                 {% if nestedComment.edited_at != NULL %}
