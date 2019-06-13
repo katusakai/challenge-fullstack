@@ -53,6 +53,11 @@ class User implements UserInterface
      */
     private $createdAt;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $profilePicture;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -169,6 +174,20 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @see UserInterface
+     */
+    public function getProfilePicture(): string
+    {
+        return (string) $this->profilePicture;
+    }
+
+    public function setProfilePicture(string $profilePicture): self
+    {
+        $this->profilePicture = $profilePicture;
+
+        return $this;
+    }
     /**
      * @see UserInterface
      */
