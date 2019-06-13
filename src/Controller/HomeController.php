@@ -13,12 +13,6 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $mainComments = $this->getDoctrine()->getRepository(Comment::class)->getMainComments();
-        $nestedComments = $this->getDoctrine()->getRepository(Comment::class)->getNestedComments();
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
-            'mainComments' => $mainComments,
-            'nestedComments' => $nestedComments,
-        ]);
+        return $this->redirectToRoute('comment');
     }
 }
