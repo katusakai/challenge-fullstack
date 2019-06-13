@@ -28,7 +28,8 @@ class CommentRepository extends ServiceEntityRepository
                 FROM comment c
                 INNER JOIN user u
                   ON c.user_id = u.id
-                WHERE c.nested_comment_id IS NULL  
+                WHERE c.nested_comment_id IS NULL
+                ORDER BY c.created_at ASC  
                 ';
 
         $query = $conn->prepare($sql);
@@ -45,7 +46,8 @@ class CommentRepository extends ServiceEntityRepository
                 FROM comment c
                 INNER JOIN user u
                   ON c.user_id = u.id
-                WHERE c.nested_comment_id IS NOT NULL  
+                WHERE c.nested_comment_id IS NOT NULL
+                ORDER BY c.created_at ASC  
                 ';
 
         $query = $conn->prepare($sql);
