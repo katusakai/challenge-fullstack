@@ -1,7 +1,12 @@
 .commentBox {
   padding-bottom: 10px;
   padding-top: 10px;
+
+  .nested {
+    padding-left: 30px;
+  }
 }
+
 .createdAt {
   padding-left: 10px;
 }

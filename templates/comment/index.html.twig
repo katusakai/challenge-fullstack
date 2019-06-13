@@ -15,7 +15,25 @@
                 <div>
                     {{ mainComment.text }}
                 </div>
+
+                {% for nestedComment in nestedComments %}
+                    {% if nestedComment.nested_comment_id == mainComment.id %}
+                        <div class="commentBox nested">
+                            <div>{{ nestedComment.first_name }} {{ nestedComment.last_name }}
+                                <small class="text-secondary createdAt">Created at {{ nestedComment.created_at|date('Y-m-d H:i') }}</small>
+                                {% if nestedComment.edited_at != NULL %}
+                                    <small class="text-secondary float-right">Edited at {{ nestedComment.edited_at|date('Y-m-d H:i') }}</small>
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ nestedComment.text }}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
             </div>
+            <div class="dropdown-divider"></div>
         {% endfor %}
     </div>
 {% endblock %}
