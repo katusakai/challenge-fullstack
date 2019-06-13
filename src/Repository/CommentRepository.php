@@ -24,7 +24,7 @@ class CommentRepository extends ServiceEntityRepository
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-                SELECT DISTINCT c.id, c.text, c.created_at, c.edited_at, u.username, u.id as user_id, u.first_name, u.last_name, u.email
+                SELECT DISTINCT c.id, c.text, c.created_at, c.edited_at, u.username, u.id as user_id, u.first_name, u.last_name, u.email, u.profile_picture
                 FROM comment c
                 INNER JOIN user u
                   ON c.user_id = u.id
@@ -42,7 +42,7 @@ class CommentRepository extends ServiceEntityRepository
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-                SELECT DISTINCT c.id, c.nested_comment_id, c.text, c.created_at, c.edited_at, u.username, u.id as user_id, u.first_name, u.last_name, u.email
+                SELECT DISTINCT c.id, c.nested_comment_id, c.text, c.created_at, c.edited_at, u.username, u.id as user_id, u.first_name, u.last_name, u.email, u.profile_picture
                 FROM comment c
                 INNER JOIN user u
                   ON c.user_id = u.id
