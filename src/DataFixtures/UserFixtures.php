@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
+use App\Helpers\RandomDate;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -22,14 +23,17 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
+        $randomDates= new RandomDate();
+
         for ($i = 0; $i < 10; $i++){
+            $createdDate = $randomDates->get(15);
             $user = new User();
             $user
                 ->setUsername('username' . $i)
                 ->setFirstName('Firstname' . $i)
                 ->setLastName('Lastname' .$i)
                 ->setEmail('email' . $i . '@email.lt')
-                ->setCreatedAt(new \DateTime())
+                ->setCreatedAt($createdDate)
                 ->setPassword($this->passwordEncoder->encodePassword(
                     $user,
                     'password'

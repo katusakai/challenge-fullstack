@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Comment;
+use App\Helpers\RandomDate;
 use App\Helpers\RandomId;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -31,12 +32,15 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
 
     private function mainComments(ObjectManager $manager)
     {
+        $randomDates= new RandomDate();
+
         for ($i = 0; $i <20; $i++){
+            $createdDate = $randomDates->get(13);
             $comment = new Comment();
             $comment
                 ->setUserId($this->randomId->getUserId())
                 ->setText('The content of main comment no ' . $i)
-                ->setCreatedAt(new \DateTime())
+                ->setCreatedAt($createdDate)
             ;
             $manager->persist($comment);
             $manager->flush();
@@ -47,13 +51,16 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
 
     private function nestedComments(ObjectManager $manager)
     {
+        $randomDates= new RandomDate();
+
         for ($i = 0; $i <20; $i++){
+            $createdDate = $randomDates->get(12);
             $comment = new Comment();
             $comment
                 ->setUserId($this->randomId->getUserId())
                 ->setNestedCommentId($this->randomId->getCommentId())
                 ->setText('The content of nested comment '. $comment->getNestedCommentId() .' no ' . $i)
-                ->setCreatedAt(new \DateTime())
+                ->setCreatedAt($createdDate)
             ;
             $manager->persist($comment);
             $manager->flush();
