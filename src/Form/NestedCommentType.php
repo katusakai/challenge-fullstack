@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class MainCommentType extends AbstractType
+class NestedCommentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -29,6 +29,10 @@ class MainCommentType extends AbstractType
                 'data' => new \DateTime(),
                 'attr' => ['hidden' => ''],
                 'widget' => 'single_text',
+                'label' => false
+            ])
+            ->add('nestedCommentId', NumberType::class, [
+                'attr' => ['hidden' => ''],
                 'label' => false
             ])
             ->add('submit', SubmitType::class)
