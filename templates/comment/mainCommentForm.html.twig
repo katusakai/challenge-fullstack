@@ -1,5 +1,6 @@
 {{ form_start(mainCommentForm) }}
         {{ form_row(mainCommentForm.userId, {'attr': {'value': app.token.user.id }}) }}
-        {{ form_row(mainCommentForm.text) }}
-<input type="submit" class="btn btn-info btn-sm" value="Post" />
+        {{ form_row(mainCommentForm.text, {'attr': {'class': 'form-control no-border' }}) }}
+        <div class="dropdown-divider"></div>
+        <input type="submit" class="btn btn-success btn-sm" value="Post" />
 {{ form_end(mainCommentForm) }}
