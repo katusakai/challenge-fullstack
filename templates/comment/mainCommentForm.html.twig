@@ -1,0 +1,6 @@
+{{ form_start(mainCommentForm) }}
+        {{ form_row(mainCommentForm.userId, {'attr': {'value': app.token.user.id }}) }}
+        {{ form_row(mainCommentForm.text, {'attr': {'class': 'form-control no-border' }}) }}
+        <div class="dropdown-divider"></div>
+        {{ form_row(mainCommentForm.submit, {'attr': {'class': 'btn btn-success btn-sm'}, 'label': 'Post'}) }}
+{{ form_end(mainCommentForm) }}

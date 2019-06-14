@@ -34,9 +34,11 @@
                         </div>
                     {% endif %}
                 {% endfor %}
+                {{ include('comment/nestedCommentForm.html.twig') }}
 
             </div>
             <div class="dropdown-divider"></div>
         {% endfor %}
+        {% include('comment/mainCommentForm.html.twig') %}
     </div>
 {% endblock %}
