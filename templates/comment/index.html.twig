@@ -38,14 +38,16 @@
                     {% endfor %}
                 </div>
                 <div>
-                    <a href="javascript:void(0)" class="text-primary" id="commentsToggler-{{ mainComment.id }}">Replies {{ nestedCommentCount }}</a>
+                    <a href="javascript:void(0)" class="text-primary commentsToggler" data-mainComment="{{ mainComment.id }}" id="commentsToggler-{{ mainComment.id }}">Replies {{ nestedCommentCount }}</a>
                 </div>
-
-                {{ include('comment/nestedCommentForm.html.twig') }}
-
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    {{ include('comment/nestedCommentForm.html.twig') }}
+                {% endif %}
             </div>
             <div class="dropdown-divider"></div>
         {% endfor %}
-        {% include('comment/mainCommentForm.html.twig') %}
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            {% include('comment/mainCommentForm.html.twig') %}
+        {% endif %}
     </div>
 {% endblock %}
