@@ -42,12 +42,10 @@
                         {% endfor %}
                     </div>
                     <div>
-                        <a href="javascript:void(0)" class="text-primary commentsToggler" data-mainComment="{{ mainComment.id }}" id="commentsToggler-{{ mainComment.id }}">Replies {{ nestedCommentCount }}</a>
+                        <a href="javascript:void(0)" class="text-primary commentsToggler" data-mainComment="{{ mainComment.id }}">Replies {{ nestedCommentCount }}</a>
+                        <a href="javascript:void(0)" class="text-primary nestedCommentFormToggler" data-mainComment="{{ mainComment.id }}">Comment</a>
                     </div>
-                    <div>
-                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                            {{ include('comment/nestedCommentForm.html.twig') }}
-                        {% endif %}
+                    <div id="nested-comment-form-container-{{ mainComment.id }}">
                     </div>
                 </div>
             </div>
@@ -59,4 +57,9 @@
             {% include('comment/mainCommentForm.html.twig') %}
         {% endif %}
     </div>
+
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        {{ include('comment/nestedCommentForm.html.twig') }}
+    {% endif %}
+
 {% endblock %}

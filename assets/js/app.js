@@ -14,3 +14,4 @@ require('bootstrap');
 // const $ = require('jquery');
 
 import nestedCommentsToggle from './custom/nestedCommentsToggle.js';
+import nestedCommentsFormToggle from './custom/nestedCommentsFormAppear';
