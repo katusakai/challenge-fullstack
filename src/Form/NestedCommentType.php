@@ -22,8 +22,7 @@ class NestedCommentType extends AbstractType
                 'label' => false
             ])
             ->add('text', TextareaType::class, [
-                'label' => false,
-                'attr' => ['placeholder' => 'Add a comment']
+                'label' => false
             ])
             ->add('createdAt', DateTimeType::class, [
                 'data' => new \DateTime(),

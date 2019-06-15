@@ -1,7 +1,6 @@
 {{ form_start(nestedCommentForm, {'attr': {'id': mainComment.id}}) }}
         {{ form_row(nestedCommentForm.userId, {'attr': {'value': app.token.user.id }}) }}
         {{ form_row(nestedCommentForm.nestedCommentId, {'attr': {'value': mainComment.id }}) }}
-        {{ form_row(nestedCommentForm.text, {'attr': {'class': 'form-control no-border' }}) }}
-        <div class="dropdown-divider"></div>
+        {{ form_row(nestedCommentForm.text, {'attr': {'class': 'form-control no-border', 'placeholder': 'Comment a comment' }}) }}
 {{ form_row(nestedCommentForm.submit, {'attr': {'class': 'btn btn-success btn-sm'}, 'label': 'Post'}) }}
 {{ form_end(nestedCommentForm) }}
