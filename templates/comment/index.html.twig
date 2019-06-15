@@ -5,40 +5,61 @@
 {% block body %}
     <div class="shadow p-3 mb-5 bg-white rounded">
         {% for mainComment in mainComments %}
-            <div class="commentBox">
-                <div class="float-left"><img class="profilePicture" src="{{ mainComment.profile_picture }}"></div>
-                <div>{{ mainComment.first_name }} {{ mainComment.last_name }}
-                    <small class="text-secondary createdAt">Created at {{ mainComment.created_at|date('Y-m-d H:i') }}</small>
-                    {% if mainComment.edited_at != NULL %}
-                    <small class="text-secondary float-right">Edited at {{ mainComment.edited_at|date('Y-m-d H:i') }}</small>
-                    {% endif %}
-                </div>
+            <div class="commentBox comment-box-grid">
+                <div><img class="profilePicture" src="{{ mainComment.profile_picture }}"></div>
                 <div>
-                    {{ mainComment.text }}
+                    <div>{{ mainComment.first_name }} {{ mainComment.last_name }}
+                        <small class="text-secondary createdAt">Created at {{ mainComment.created_at|date('Y-m-d H:i') }}</small>
+                        {% if mainComment.edited_at != NULL %}
+                            <small class="text-secondary float-right">Edited at {{ mainComment.edited_at|date('Y-m-d H:i') }}</small>
+                        {% endif %}
+                    </div>
+                    <div>
+                        {{ mainComment.text }}
+                    </div>
+                    <div id="nestedComments-{{ mainComment.id }}" hidden>
+                        {% set nestedCommentCount = 0 %}
+                        {% for nestedComment in nestedComments %}
+                            {% if nestedComment.nested_comment_id == mainComment.id %}
+                                {% set nestedCommentCount = nestedCommentCount + 1 %}
+                                <div class="commentBox nested comment-box-grid">
+                                    <div>
+                                        <img class="profilePicture" src="{{ nestedComment.profile_picture }}">
+                                    </div>
+                                    <div>
+                                        <div>{{ nestedComment.first_name }} {{ nestedComment.last_name }}
+                                            <small class="text-secondary createdAt">Created at {{ nestedComment.created_at|date('Y-m-d H:i') }}</small>
+                                            {% if nestedComment.edited_at != NULL %}
+                                                <small class="text-secondary float-right">Edited at {{ nestedComment.edited_at|date('Y-m-d H:i') }}</small>
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ nestedComment.text }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div>
+                        <a href="javascript:void(0)" class="text-primary commentsToggler" data-mainComment="{{ mainComment.id }}">Replies {{ nestedCommentCount }}</a>
+                        <a href="javascript:void(0)" class="text-primary nestedCommentFormToggler" data-mainComment="{{ mainComment.id }}">Comment</a>
+                    </div>
+                    <div id="nested-comment-form-container-{{ mainComment.id }}">
+                    </div>
                 </div>
-
-                {% for nestedComment in nestedComments %}
-                    {% if nestedComment.nested_comment_id == mainComment.id %}
-                        <div class="commentBox nested">
-                            <div class="float-left"><img class="profilePicture" src="{{ nestedComment.profile_picture }}">
-                            </div>
-                            <div>{{ nestedComment.first_name }} {{ nestedComment.last_name }}
-                                <small class="text-secondary createdAt">Created at {{ nestedComment.created_at|date('Y-m-d H:i') }}</small>
-                                {% if nestedComment.edited_at != NULL %}
-                                    <small class="text-secondary float-right">Edited at {{ nestedComment.edited_at|date('Y-m-d H:i') }}</small>
-                                {% endif %}
-                            </div>
-                            <div>
-                                {{ nestedComment.text }}
-                            </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-                {{ include('comment/nestedCommentForm.html.twig') }}
-
             </div>
-            <div class="dropdown-divider"></div>
+            {% if mainComments[mainComments|length - 1] != mainComment  %}
+                <div class="dropdown-divider"></div>
+            {% endif %}
         {% endfor %}
-        {% include('comment/mainCommentForm.html.twig') %}
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            {% include('comment/mainCommentForm.html.twig') %}
+        {% endif %}
     </div>
+
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        {{ include('comment/nestedCommentForm.html.twig') }}
+    {% endif %}
+
 {% endblock %}

@@ -4,7 +4,13 @@
 
   .nested {
     padding-left: 30px;
+    padding-top: 15px;
   }
+}
+
+.comment-box-grid {
+  display: grid;
+  grid-template-columns: min-content auto;
 }
 
 .createdAt {
@@ -19,4 +25,8 @@
 
 .no-border {
   border: 0px solid;
+}
+
+.nestedCommentFormToggler {
+  padding-left: 25px;
 }
