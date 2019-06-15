@@ -51,7 +51,9 @@
                     </div>
                 </div>
             </div>
-            <div class="dropdown-divider"></div>
+            {% if mainComments[mainComments|length - 1] != mainComment  %}
+                <div class="dropdown-divider"></div>
+            {% endif %}
         {% endfor %}
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
             {% include('comment/mainCommentForm.html.twig') %}
