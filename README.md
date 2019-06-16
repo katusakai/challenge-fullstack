@@ -20,3 +20,14 @@
 - We always prefer the code that is robust, easy to read and re-usable
 - Make design user friendly
 - Have fun!
+
+## Install notes
+1. **composer install**
+2. **npm install**
+3. **npm run build**
+4. create mysql database
+5. change mysql credentials in **.env**
+6. **php bin/console doctrine:migration:migrate** updates database schema
+7. **php bin/console doctrine:fixtures:load** fills database with fake data
+8. **php bin/console server:run**
+9. http://127.0.0.1:8000
