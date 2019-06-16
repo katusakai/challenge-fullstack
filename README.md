@@ -31,3 +31,4 @@
 7. **php bin/console doctrine:fixtures:load** fills database with fake data
 8. **php bin/console server:run**
 9. http://127.0.0.1:8000
+10. Log in:    **username:** username1 **password:** password, or **username:** username2 **password:** password
