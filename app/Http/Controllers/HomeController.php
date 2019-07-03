@@ -27,7 +27,8 @@ class HomeController extends Controller
     public function index()
     {
         $comments = new Comments;
-        dump($comments->sortedComments[0]->nestedComments[0]->user->name);
+        dump($comments->sortedComments);
+        $comments = $comments->sortedComments;
         return view('home', compact('comments'));
     }
 }
