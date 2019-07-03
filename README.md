@@ -26,6 +26,11 @@
 2. run **npm install**
 3. run **npm run dev**
 4. rename **.env.example** to **.env**
-5. run **php artisan db:seed**
-8. run **php artisan serve**
-9. http://127.0.0.1:8000
+5. run **touch database/database.sqlite** we will store our data inside this file. We are not using mysql in this project
+6. run **php artisan db:seed**
+7. run **php artisan serve**
+8. go to **http://127.0.0.1:8000** or some different url shown in console
+
+## Live version
+
+http://katusakai.lt/challenge-fullstack/public/
