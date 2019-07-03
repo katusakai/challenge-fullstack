@@ -18,3 +18,5 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/redirect', 'Auth\LoginController@redirectToProvider')->name('google.login');
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::post('/mainComment', 'MainCommentController@store')->name('mainComment.store');
