@@ -12,13 +12,13 @@ class RandomDate
         $time = time() - $rand;
         $date = date( 'Y-m-d H:i', $time);
 
-        return(new \DateTime($date));
+        return new \DateTime($date);
     }
 
     public static function updated($daysBefore)
     {
         $randomNumber = rand(0,100);
-        if ($randomNumber > 70){
+        if ($randomNumber > 85){
             return static::created($daysBefore);
         } else{
             return NULL;
