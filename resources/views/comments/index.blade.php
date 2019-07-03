@@ -18,17 +18,23 @@
                 @endforeach
                 <div>
                     <a href="javascript:void(0)" class="text-primary commentsToggler" data-mainComment="{{ $comment->id }}">Replies ({{ 3 }})</a>
-                    <a href="javascript:void(0)" class="text-primary nestedCommentFormToggler" data-mainComment="{{ $comment->id }}">Comment</a>
+                    @if(auth()->user())
+                        <a href="javascript:void(0)" class="text-primary nestedCommentFormToggler" data-mainComment="{{ $comment->id }}">Comment</a>
+                    @endif
                 </div>
-                <div id="nested-comment-form-container-{{ $comment->id }}">
-                    @include('comments.nestedCommentForm')
-                </div>
+                @if(auth()->user())
+                    <div id="nested-comment-form-container-{{ $comment->id }}">
+                        @include('comments.nestedCommentForm')
+                    </div>
+                @endif
             </div>
         </div>
         <div class="dropdown-divider"></div>
     @endforeach
-    <div>
-        @include('comments.mainCommentForm')
-    </div>
+    @if(auth()->user())
+        <div>
+            @include('comments.mainCommentForm')
+        </div>
+    @endif
 </div>
 
