@@ -13,6 +13,6 @@ $factory->define(Comment::class, function () {
         'user_id' => UserId::list()[array_rand(UserId::list())],
         'text' => RandomJokesApi::get(),
         'created_at' => RandomDate::created(5),
-        'updated_at' => RandomDate::updated(2),
+        'updated_at' => now(),
     ];
 });

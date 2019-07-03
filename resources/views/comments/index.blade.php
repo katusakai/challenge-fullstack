@@ -6,7 +6,7 @@
                 <div>
                     {{$comment->user->name}}
                     <small class="text-secondary createdAt">Created at {{ $comment->created_at->format('Y-m-d H:i') }}</small>
-                    @if($comment->updated_at)
+                    @if($comment->updated_at !== $comment->created_at)
                         <small class="text-secondary float-right">Edited at {{  $comment->updated_at->format('Y-m-d H:i') }}</small>
                     @endif
                 </div>
