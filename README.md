@@ -20,3 +20,12 @@
 - We always prefer the code that is robust, easy to read and re-usable
 - Make design user friendly
 - Have fun!
+
+## Install notes
+1. run **composer install**
+2. run **npm install**
+3. run **npm run dev**
+4. rename **.env.example** to **.env**
+5. run **php artisan db:seed**
+8. run **php artisan serve**
+9. http://127.0.0.1:8000
