@@ -17,7 +17,7 @@
                     @include('comments.nested')
                 @endforeach
                 <div>
-                    <a href="javascript:void(0)" class="text-primary commentsToggler" data-mainComment="{{ $comment->id }}">Replies ({{ 3 }})</a>
+                    <a href="javascript:void(0)" class="text-primary commentsToggler" data-mainComment="{{ $comment->id }}">Replies ({{ count($comment->nestedComments) }})</a>
                     @if(auth()->user())
                         <a href="javascript:void(0)" class="text-primary nestedCommentFormToggler" data-mainComment="{{ $comment->id }}">Comment</a>
                     @endif

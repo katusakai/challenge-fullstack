@@ -1,4 +1,4 @@
-<form name="nested_comment" method="post" id="nested-comment-form">
+<form name="nested_comment" method="post" hidden id="nested-comment-form">
     @CSRF
     <div>
         <input type="text" id="nested_comment_userId" name="nested_comment[userId]" required="required" hidden="" value="12">
