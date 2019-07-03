@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Aggregators\Comments;
-use App\API\RandomJokesApi;
-use App\Comment;
-use App\User;
+use App\Helpers\CommentsId;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,7 +26,6 @@ class HomeController extends Controller
     public function index()
     {
         $comments = new Comments;
-        dump($comments);
         $comments = $comments->sortedComments;
         return view('home', compact('comments'));
     }
