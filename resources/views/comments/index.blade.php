@@ -13,9 +13,11 @@
                 <div>
                     {{$comment->text}}
                 </div>
-                @foreach($comment->nestedComments as $nestedComment)
-                    @include('comments.nested')
-                @endforeach
+                <div id="nestedComments-{{$comment->id}}" hidden>
+                    @foreach($comment->nestedComments as $nestedComment)
+                        @include('comments.nested')
+                    @endforeach
+                </div>
                 <div>
                     <a href="javascript:void(0)" class="text-primary commentsToggler" data-mainComment="{{ $comment->id }}">Replies ({{ count($comment->nestedComments) }})</a>
                     @if(auth()->user())
@@ -37,4 +39,3 @@
         </div>
     @endif
 </div>
-
