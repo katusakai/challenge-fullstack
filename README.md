@@ -25,7 +25,7 @@
 1. run **composer install**
 2. run **npm install**
 3. run **npm run dev**
-4. rename **.env.example** to **.env**
+4. run **mv .env.example .env** to rename environment file. Needed credentials are prepared there for limited time.
 5. run **touch database/database.sqlite** we will store our data inside this file. We are not using mysql in this project
 6. run **php artisan db:seed**
 7. run **php artisan serve**
