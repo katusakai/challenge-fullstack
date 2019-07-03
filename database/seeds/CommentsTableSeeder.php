@@ -12,6 +12,16 @@ class CommentsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Comment::class, 30)->create();
+        $mainCommentsCount = 30;
+        $nestedCommentsCount = 50;
+
+        factory(Comment::class, $mainCommentsCount)->create();
+        factory(Comment::class, $nestedCommentsCount)->create()->each(
+            function ($nestedComment) use ($mainCommentsCount) {
+                $nested_comment_id = random_int(1,$mainCommentsCount);
+                $nestedComment->nested_comment_id = $nested_comment_id;
+                $nestedComment->save();
+            }
+        );
     }
 }

@@ -20,9 +20,6 @@ class CreateCommentsTable extends Migration
             $table->text('text');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('nested_comment_id')->references('id')->on('comments');
-
             $table->index('user_id');
         });
     }
