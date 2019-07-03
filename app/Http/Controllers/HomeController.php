@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Aggregators\Comments;
-use App\Helpers\CommentsId;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
