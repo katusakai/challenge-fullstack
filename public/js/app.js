@@ -36763,6 +36763,7 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_NestedCommentsToggle_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/NestedCommentsToggle.js */ "./resources/js/components/NestedCommentsToggle.js");
+/* harmony import */ var _components_NestedCommentFormToggle_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/NestedCommentFormToggle.js */ "./resources/js/components/NestedCommentFormToggle.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -36786,6 +36787,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // window
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
 
 
 
@@ -36847,6 +36849,54 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/NestedCommentFormToggle.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/NestedCommentFormToggle.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var nestedCommentFormToggle = function () {
+  var _allTogglers = document.getElementsByClassName('nestedCommentFormToggler');
+
+  var _countMainComments = _allTogglers.length;
+  var _allNestedCommentForms = [];
+
+  for (var i = 0; i < _countMainComments; i++) {
+    var mainCommentId = _allTogglers[i].getAttribute("data-mainComment");
+
+    _allNestedCommentForms[i] = document.getElementById("nested-comment-form-" + mainCommentId);
+  }
+
+  function toggle() {
+    var _loop = function _loop(_i) {
+      _allTogglers[_i].addEventListener('click', function () {
+        if (_allNestedCommentForms[_i].hasAttribute('hidden')) {
+          _allNestedCommentForms[_i].removeAttribute("hidden");
+        } else {
+          var _hidden = document.createAttribute("hidden");
+
+          _allNestedCommentForms[_i].setAttributeNode(_hidden);
+        }
+      });
+    };
+
+    for (var _i = 0; _i < _countMainComments; _i++) {
+      _loop(_i);
+    }
+  }
+
+  return {
+    toggle: toggle()
+  };
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (nestedCommentFormToggle);
 
 /***/ }),
 

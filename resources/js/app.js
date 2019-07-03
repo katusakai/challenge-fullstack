@@ -29,3 +29,4 @@ require('./bootstrap');
 
 
 import nestedCommentsToggle from './components/NestedCommentsToggle.js';
+import nestedCommentFormToggle from './components/NestedCommentFormToggle.js';

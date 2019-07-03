@@ -1,7 +1,7 @@
 <form action="{{route('mainComment.store')}}" name="main_comment" method="post">
     @CSRF
     <div>
-        <textarea id="text" name="text" placeholder="Add a comment" required class="form-control no-border">{{ old('text') }}</textarea>
+        <textarea name="text" placeholder="Add a comment" class="form-control no-border">{{ old('text') }}</textarea>
             @error('text')
                     <strong>{{ $message }}</strong>
             @enderror

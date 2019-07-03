@@ -25,7 +25,7 @@
                     @endif
                 </div>
                 @if(auth()->user())
-                    <div id="nested-comment-form-container-{{ $comment->id }}">
+                    <div id="nested-comment-form-{{ $comment->id }}" hidden>
                         @include('comments.nestedCommentForm')
                     </div>
                 @endif
