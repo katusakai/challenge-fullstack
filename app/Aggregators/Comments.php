@@ -34,7 +34,7 @@ class Comments
             $sortedComments[] = $mainComment;
 
             $nestedComments = [];
-
+            $mainComment->nestedComments = [];
             foreach ($this->nestedComments as $nestedComment) {
                 if ($nestedComment->nested_comment_id == $mainComment->id) {
                     $nestedComments[] = $nestedComment;
