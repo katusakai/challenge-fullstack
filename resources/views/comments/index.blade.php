@@ -31,7 +31,9 @@
                 @endif
             </div>
         </div>
-        <div class="dropdown-divider"></div>
+        @if(!$loop->last)
+            <div class="dropdown-divider"></div>
+        @endif
     @endforeach
     @if(auth()->user())
         <div>
