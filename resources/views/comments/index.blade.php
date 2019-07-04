@@ -40,4 +40,9 @@
             @include('comments.mainCommentForm')
         </div>
     @endif
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                {{$pagination}}
+            </div>
+        </div>
 </div>

@@ -25,7 +25,8 @@ class HomeController extends Controller
     public function index()
     {
         $comments = new Comments;
+        $pagination = $comments->mainComments->links();
         $comments = $comments->sortedComments;
-        return view('home', compact('comments'));
+        return view('home', compact('comments', 'pagination'));
     }
 }

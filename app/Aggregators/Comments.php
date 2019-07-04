@@ -10,7 +10,7 @@ class Comments
 {
     public $mainComments;
 
-    public $nestedComments;
+    private $nestedComments;
 
     public $sortedComments;
 
@@ -21,7 +21,7 @@ class Comments
      */
     public function __construct()
     {
-        $this->mainComments = Comment::all()->where('nested_comment_id', null)->sortByDesc('created_at');
+        $this->mainComments = Comment::where('nested_comment_id', null)->orderBy('created_at', 'desc')->paginate(10);
         $this->nestedComments = Comment::all()->where('nested_comment_id', !null)->sortByDesc('created_at');
         $this->sort();
     }
