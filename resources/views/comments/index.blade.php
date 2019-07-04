@@ -4,11 +4,13 @@
             <div><img class="profilePicture" src="{{ url($comment->user->avatar) }}" alt=""></div>
             <div>
                 <div>
-                    {{$comment->user->name}}
-                    <small class="text-secondary createdAt">Created at {{ $comment->created_at->format('Y-m-d H:i') }}</small>
-                    @if($comment->updated_at !== $comment->created_at)
-                        <small class="text-secondary float-right">Edited at {{  $comment->updated_at->format('Y-m-d H:i') }}</small>
-                    @endif
+                    <div class="d-flex">
+                        <strong>{{$comment->user->name}}</strong>
+                        <small class="text-secondary createdAt  d-none d-sm-block">Created at {{ $comment->created_at->format('Y-m-d H:i') }}</small>
+                        @if($comment->updated_at !== $comment->created_at)
+                            <small class="text-secondary ml-auto d-none d-lg-block">Edited at {{  $comment->updated_at->format('Y-m-d H:i') }}</small>
+                        @endif
+                    </div>
                 </div>
                 <div>
                     {{$comment->text}}
