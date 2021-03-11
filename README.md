@@ -1,36 +1,19 @@
-# Task for Fullstack Developer
-
-## Few simple steps
-
-1. Fork this repo
-2. Create a simple comment box
-3. Prepare pull request and let us know that you are done
+## Warehouse
 
 ## Requirements
-- Only authenticated users should be able to post a comment or reply.
-- Ability to authenticate using at least 1 social network
-- Create Seeders
-- It should be possible to reply to nested comments
-- Design must be responsive.
-- Use Laravel and Vue.js
-- Use CSS preprocessor (SCSS preferred).
-- Use a Javascript task-runner Webpack
+1. docker https://docs.docker.com/get-docker/
+2. docker-compose https://docs.docker.com/compose/install/
 
-## Few tips
-- We always prefer the code that is robust, easy to read and re-usable
-- Make design user friendly
-- Have fun!
+## First time setup
+1. Clone this repository.
+2. Run `bash ./scripts/generate-env.sh`
+3. Edit .env file according to you. Make sure that you use empty ports.
+4. Edit api/.env. Add your `MAIL_USERNAME` and `MAIL_PASSWORD`. Get those values from https://mailtrap.io/
+5. To install run `bash ./scripts/install.sh`
 
-## Install notes
-1. run **composer install**
-2. run **cp .env.example .env** to rename environment file. Needed credentials are prepared there for limited time.
-3. run **touch database/database.sqlite** we will store our data inside this file. We are not using mysql in this project
-4. run **php artisan migrate:fresh**
-5. run **php artisan db:seed**
-6. run **php artisan key:generate**
-7. run **php artisan serve**
-8. go to **http://127.0.0.1:8000** or some different url shown in console
+## Usage
 
-## Live version
+1. To start application run `bash ./scripts/start.sh`
+2. To stop application Run `docker-compose down`
 
-http://katusakai.lt/challenge-fullstack/public/
+
