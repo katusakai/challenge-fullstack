@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Login') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="/login">
                             @csrf
 
                             <div class="form-group row">
@@ -62,7 +62,7 @@
                                     </a>
 
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        <a class="btn btn-link" href="/password/reset">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
                                     @endif
