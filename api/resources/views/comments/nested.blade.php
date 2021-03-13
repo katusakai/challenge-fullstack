@@ -1,6 +1,8 @@
 <div class="commentBox nested comment-box-grid">
     <div>
-        <img class="profilePicture" src="{{ url($nestedComment->user->avatar) }}">
+        @if($nestedComment->user->avatar)
+            <img class="profilePicture" src="{{ url($nestedComment->user->avatar) }}">
+        @endif
     </div>
     <div>
         <div class="d-flex">

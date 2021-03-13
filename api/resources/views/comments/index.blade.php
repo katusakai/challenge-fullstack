@@ -1,7 +1,11 @@
 <div class="shadow p-3 mb-5 bg-white rounded">
     @foreach($comments as $comment)
         <div class="commentBox comment-box-grid">
-            <div><img class="profilePicture" src="{{ url($comment->user->avatar) }}" alt=""></div>
+            <div>
+                @if($comment->user->avatar)
+                    <img class="profilePicture" src="{{ url($comment->user->avatar) }}" alt="">
+                @endif
+            </div>
             <div>
                 <div>
                     <div class="d-flex">
