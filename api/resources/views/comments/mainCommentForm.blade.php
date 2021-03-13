@@ -1,4 +1,4 @@
-<form action="{{route('mainComment.store')}}" name="main_comment" method="post">
+<form action="/mainComment" name="main_comment" method="post">
     @CSRF
     <div>
         <textarea name="text" placeholder="Add a comment" class="form-control no-border">{{ old('text') }}</textarea>

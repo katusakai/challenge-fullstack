@@ -57,7 +57,7 @@
                                         {{ __('Login') }}
                                     </button>
 
-                                    <a class="btn btn-secondary" href="{{route('google.login')}}">
+                                    <a class="btn btn-secondary" href="/redirect">
                                         Google login
                                     </a>
 
