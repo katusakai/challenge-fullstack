@@ -25,6 +25,6 @@ class CommentController extends Controller
 
         ]);
 
-        return redirect(route('home'));
+        return redirect('/');
     }
 }

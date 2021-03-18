@@ -1,4 +1,4 @@
-<form action="{{route('mainComment.store')}}" name="nested_comment" method="post">
+<form action="/mainComment" name="nested_comment" method="post">
     @CSRF
     <div>
         <input type="text" name="nested_comment_id" hidden value="{{ $comment->id }}">
